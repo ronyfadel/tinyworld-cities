@@ -2,4 +2,4 @@ blank_issues_enabled: false
 contact_links:
   - name: How a city gets listed (requirements, camera protocol)
     url: https://github.com/ronyfadel/tinyworld-cities#readme
-    about: Read this first. Your site must allow being embedded in an iframe.
+    about: Read this before adding a city. Your site must allow being embedded in an iframe.

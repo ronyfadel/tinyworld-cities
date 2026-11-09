@@ -1,0 +1,54 @@
+name: Report a problem
+description: Something on Tiny World looks wrong, doesn't line up, or doesn't work
+title: "Bug: <short description>"
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for helping make Tiny World better! If a city's map itself is broken (its own buttons, art or data), tell its maker too. Tiny World only frames their site.
+  - type: input
+    id: city
+    attributes:
+      label: City
+      description: Which city, if it's about one. Leave empty for the world map.
+      placeholder: Lisbon
+  - type: dropdown
+    id: kind
+    attributes:
+      label: What kind of problem?
+      options:
+        - The city doesn't line up with the real map (wrong spot, size or angle)
+        - The city doesn't open, or stays blank
+        - I can't get back out to the world
+        - Wrong icon, name or link
+        - Sound plays when it shouldn't
+        - Something else
+    validations:
+      required: true
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened?
+      description: What you did, what you expected, and what you saw instead. Screenshots help a lot (drag them in).
+    validations:
+      required: true
+  - type: input
+    id: link
+    attributes:
+      label: Link
+      description: The address bar when it happened (Tiny World puts the city in it, like `#lisbon`).
+      placeholder: https://tinyworld.…/#lisbon
+  - type: dropdown
+    id: device
+    attributes:
+      label: Device
+      options:
+        - Desktop or laptop
+        - Phone
+        - Tablet
+  - type: input
+    id: browser
+    attributes:
+      label: Browser
+      placeholder: Safari 19, Chrome 141, Firefox…

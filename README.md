@@ -1,11 +1,13 @@
-# Tiny World: add your city
+# Tiny World: add your city, or report a problem
 
 Tiny World is a world map of the tiny, isometric city maps people have made of their own cities.
 Zoom into a city and its map opens **live**, out of its spot on the globe, so you can step inside it.
 Zoom back out and you return to the world.
 
-This repo is just where cities get listed (the website lives elsewhere).
-**To add yours, [open an "Add a city" issue](../../issues/new?template=add-city.yml).**
+This repo is where cities get listed and problems get reported (the website lives elsewhere).
+
+- **[Add a city](../../issues/new?template=add-city.yml)**: list your own tiny city map. Read the requirements below first.
+- **[Report a problem](../../issues/new?template=bug.yml)**: a city that doesn't line up, stays blank, won't let you back out, and so on.
 
 ## Requirements
 
