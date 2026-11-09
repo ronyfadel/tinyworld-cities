@@ -1,0 +1,97 @@
+name: Add a city
+description: List your tiny / isometric city map on Tiny World
+title: "Add: <city>, <country>"
+labels: ["new city"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for sharing your map! Tiny World shows each city **live, inside the world map**: your site is loaded in an iframe and opens out of its spot on the globe. So a few things have to be true for it to work. Please read them before submitting.
+
+        **Required**
+        - **Your site must allow being embedded in an iframe.** It must not send `X-Frame-Options: DENY` or `SAMEORIGIN`, and any `Content-Security-Policy: frame-ancestors` must allow other sites (`frame-ancestors *`, or no `frame-ancestors` at all).
+          Check with: `curl -sI https://your-site/ | grep -iE 'x-frame-options|frame-ancestors'`. No output means you're fine.
+          Many hosts set these for you: Vercel, Netlify and Cloudflare Pages are fine by default, while some frameworks or security plugins add them.
+        - It's public, on **HTTPS**, and works without signing in.
+        - It's a map of a real place: a city, a region or a country.
+        - It works when it's opened inside a frame, not only as a full tab. Don't rely on `window.top`, frame-busting scripts or pop-up sign-ins to work at all.
+
+        **Nice to have** (your city lines up better and feels more seamless)
+        - **Tell the page where your camera is**, and let it move it. That makes your map line up with the real streets, and lets visitors zoom out of your map back into the world. See the protocol in the README. It's about 15 lines of code.
+        - Open on a recognisable spot at a sensible zoom: the whole centre, not one building.
+        - Keep sound off until the visitor turns it on. Tiny World blocks autoplay, but it can't mute your site.
+
+  - type: input
+    id: city
+    attributes:
+      label: City
+      placeholder: Lisbon
+    validations:
+      required: true
+  - type: input
+    id: country
+    attributes:
+      label: Country
+      placeholder: Portugal
+    validations:
+      required: true
+  - type: input
+    id: url
+    attributes:
+      label: Map URL
+      description: The page to load in the frame (https).
+      placeholder: https://tinylisbon.com/
+    validations:
+      required: true
+  - type: input
+    id: maker
+    attributes:
+      label: Made by
+      description: Your name or handle, as it should be credited.
+      placeholder: Ada Lovelace
+    validations:
+      required: true
+  - type: input
+    id: maker_url
+    attributes:
+      label: Link for the credit
+      description: Optional. X, GitHub, personal site…
+      placeholder: https://x.com/ada
+  - type: checkboxes
+    id: embed
+    attributes:
+      label: Embedding
+      options:
+        - label: My site can be embedded in an iframe (no `X-Frame-Options` DENY/SAMEORIGIN, no restrictive `frame-ancestors`). I checked it with the curl command above.
+          required: true
+        - label: It's public, on HTTPS, and works without signing in.
+          required: true
+  - type: input
+    id: landmark
+    attributes:
+      label: Landmark for the map icon
+      description: Each city gets a small isometric icon of one landmark that best represents it.
+      placeholder: Belém Tower
+  - type: dropdown
+    id: protocol
+    attributes:
+      label: Camera protocol
+      description: Does your site report its view and accept a new one through postMessage? (See the README.)
+      options:
+        - "No"
+        - "Yes: tiny_vista / tiny_ir (lat, lon, zoom)"
+        - "Yes: tinyView (canvas x, y, scale), with a lon/lat to canvas transform"
+        - "I'd like to add it: please help"
+    validations:
+      required: true
+  - type: input
+    id: opening_view
+    attributes:
+      label: Where your map opens
+      description: Optional. The lat, lon and web-map zoom at the centre of your opening view. It helps us line it up if you don't support the protocol.
+      placeholder: 38.6916, -9.2160, zoom 16
+  - type: textarea
+    id: notes
+    attributes:
+      label: Anything else?
+      description: How it was made, a URL parameter for a cleaner embed (like `?embed=1`), known issues…
